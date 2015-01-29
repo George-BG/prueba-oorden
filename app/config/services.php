@@ -74,13 +74,10 @@ $di->set('modelsMetadata', function () {
     return new MetaDataAdapter();
 });
 
-
-
-/*-----hago la conexion de la memcache con el servicor---*/
-//cache del find de Organizaciones
+//Cache dentro de los modelos
 $di->set('modelsCache', function() use ($config)
     {
-        //Tiempo que durara la cache (un dia)
+        //Tiempo que durara la cache (6 minutos)
         $frontCache = new \Phalcon\Cache\Frontend\Data([
                 "lifetime" => 3600
         ]);
@@ -92,43 +89,6 @@ $di->set('modelsCache', function() use ($config)
         ]);
         return $cache;
     });
-
-/*/cache del find de Sucursales
-$di->set('cacheSuc', function() use ($config)
-    {
-        //Tiempo que durara la cache (un dia)
-        $frontCache = new \Phalcon\Cache\Frontend\Data([
-                "lifetime" => 3600
-        ]);
-
-        //Configurar la Memcache para conexion a la Base de Datos
-        $cache = new \Phalcon\Cache\Backend\Memcache($frontCache, [
-                'host' => $config->database->host,
-                "port" => "11211"
-        ]);
-        return $cache;
-
-    });
-
-
-//cache del find de Usuarios
-$di->set('cacheUs', function() use ($config)
-    {
-        //Tiempo que durara la cache (un dia)
-        $frontCache = new \Phalcon\Cache\Frontend\Data([
-                "lifetime" => 3600
-        ]);
-
-        //Configurar la Memcache para conexion a la Base de Datos
-        $cache = new \Phalcon\Cache\Backend\Memcache($frontCache, [
-                'host' => $config->database->host,
-                "port" => "11211"
-        ]);
-        return $cache;
-
-    });
-//---- Termina el cache-----*/
-
 
 //app/config/service.php
         //Mail service uses Gmail;
