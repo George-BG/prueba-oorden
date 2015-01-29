@@ -154,3 +154,8 @@ $di->set('dispatcher', function() {
     $dispatcher->setDefaultNamespace('Oorden\Controllers\\');
     return $dispatcher;
 }); // */
+
+$di->set('router', function(){
+    require __DIR__.'/routes.php';
+    return $router;
+});

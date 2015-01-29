@@ -97,7 +97,6 @@ class OrganizacionesController extends \Phalcon\Mvc\Controller
         }
 	}
     
-
 	public function deleteAction($id)
 	{
 		if($record = Model\Organizaciones::findFirst($id))
@@ -112,6 +111,7 @@ class OrganizacionesController extends \Phalcon\Mvc\Controller
 				}
 			}
 	}
+
     public function permisoAction($id)
     {
         if($organizacion = Model\Organizaciones::findFirst($id))
@@ -134,6 +134,14 @@ class OrganizacionesController extends \Phalcon\Mvc\Controller
                     $this->view->setVar("Errores", $organizacion->getMessages());
                 }
             }
+        }
+    }
+
+    public function orgusuariosAction()
+    {
+        if($usuarioPermisos = Model\UsuarioPermisos::find())
+        {
+            $this->view->setVar('listaRecord', $usuarioPermisos);            
         }
     }
 }

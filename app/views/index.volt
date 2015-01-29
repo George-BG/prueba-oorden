@@ -17,7 +17,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Oorden</a>
+      <a class="navbar-brand" href="http://prueba.io">Oorden</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -26,6 +26,7 @@
         <li><?=$this->tag->linkTo("organizaciones/","Organizaciones") ?></li>
         <li><?=$this->tag->linkTo("sucursales/","Sucursales") ?></li>
         <li><?=$this->tag->linkTo("usuarios/","Usuarios") ?></li>
+        <li><a href="http://prueba.io/orgusuarios" alt="Uso de routes"> Organizaciones y usuarios</a></li>
         
         
         
