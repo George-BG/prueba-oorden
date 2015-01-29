@@ -9,7 +9,7 @@ class UsuariosController extends \Phalcon\Mvc\Controller
 
     public function indexAction()
     {
-    	$this->view->setVar("listaUsuarios", Model\Usuarios::find(["cache"=>["key"=>"cacheUs"]]));
+    	$this->view->setVar("listaUsuarios", Model\Usuarios::find(["cache"=>["key"=>"my-cache-usr"]]));
     }
     public function addAction()
     {

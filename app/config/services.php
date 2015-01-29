@@ -82,7 +82,7 @@ $di->set('modelsCache', function() use ($config)
     {
         //Tiempo que durara la cache (un dia)
         $frontCache = new \Phalcon\Cache\Frontend\Data([
-                "lifetime" => 1
+                "lifetime" => 3600
         ]);
 
         //Configurar la Memcache para conexion a la Base de Datos
@@ -93,12 +93,12 @@ $di->set('modelsCache', function() use ($config)
         return $cache;
     });
 
-//cache del find de Sucursales
+/*/cache del find de Sucursales
 $di->set('cacheSuc', function() use ($config)
     {
         //Tiempo que durara la cache (un dia)
         $frontCache = new \Phalcon\Cache\Frontend\Data([
-                "lifetime" => 1
+                "lifetime" => 3600
         ]);
 
         //Configurar la Memcache para conexion a la Base de Datos
@@ -127,7 +127,7 @@ $di->set('cacheUs', function() use ($config)
         return $cache;
 
     });
-/*---- Termina el cache-----*/
+//---- Termina el cache-----*/
 
 
 //app/config/service.php

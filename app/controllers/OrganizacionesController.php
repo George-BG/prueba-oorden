@@ -9,7 +9,7 @@ class OrganizacionesController extends \Phalcon\Mvc\Controller
 
     public function indexAction()
     {
-       $this->view->setVar("listaOrganizaciones", Model\Organizaciones::find(["cache"=>["key"=>"modelsCache"]]));
+       $this->view->setVar("listaOrganizaciones", Model\Organizaciones::find(["cache"=>["key"=>"my-cache-org"]]));
     }
     
     public function addAction()

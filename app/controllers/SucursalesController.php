@@ -9,7 +9,7 @@ class SucursalesController extends \Phalcon\Mvc\Controller
 
     public function indexAction()
     {
-    	$this->view->setVar("listaSucursales", Model\Sucursales::find(["cache"=>["key"=>"cacheSuc"]]));
+    	$this->view->setVar("listaSucursales", Model\Sucursales::find(["cache"=>["key"=>"my-cache-suc"]]));
     }
     public function addAction()
 	{
