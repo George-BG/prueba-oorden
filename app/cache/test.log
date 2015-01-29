@@ -1,0 +1,8 @@
+[Wed, 28 Jan 15 23:54:46 -0600][ALERT] Alerta en un log
+[Wed, 28 Jan 15 23:54:46 -0600][ERROR] Error en un log
+[Thu, 29 Jan 15 00:00:33 -0600][ALERT] Alerta en un log
+[Thu, 29 Jan 15 00:00:33 -0600][ERROR] Error en un log
+[Thu, 29 Jan 15 00:08:53 -0600][ALERT] Log alert-Prueba Alert
+[Thu, 29 Jan 15 00:08:53 -0600][ERROR] Log error-Prueba Error
+[Thu, 29 Jan 15 00:11:17 -0600][ALERT] Log alert-Prueba Alert se envio mail a Tocken User
+[Thu, 29 Jan 15 00:11:17 -0600][ERROR] Log error-Prueba Alert se envio mail a Tocken User

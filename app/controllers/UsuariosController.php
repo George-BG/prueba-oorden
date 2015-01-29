@@ -1,8 +1,8 @@
 <?php
-
+ 
 namespace Oorden\Controllers;
 
-use Oorden\Models as Model;
+use Oorden\Models as Model; 
 
 class UsuariosController extends \Phalcon\Mvc\Controller
 {
@@ -43,42 +43,51 @@ class UsuariosController extends \Phalcon\Mvc\Controller
     	}
     }
 
-public function editAction($id)
-{
-	if($usuario = Model\Usuarios::findFirst($id))
+	public function editAction($id)
 	{
-		 $this->view->setVar('viewRecord', $usuario);
-		 
-		if($this->request->isPost())
+		if($usuario = Model\Usuarios::findFirst($id))
 		{
-			$usuario->usuario_id =$this->request->getPost('usuario_id','string');
-			$usuario->email =$this->request->getPost('email','string');
-			$usuario->nombre =$this->request->getPost('nombre','string');
-			$usuario->password =$this->request->getPost('password','string');
-			$usuario->activo =$this->request->getPost('activo','string');
-			$usuario->fecha_registro =$this->request->getPost('fecha_registro','string');
-			$usuario->fecha_login =$this->request->getPost('fecha_login','string');
-			$usuario->intento_de_session =$this->request->getPost('intento_de_session','string');
-			$usuario->ultimo_intento_session =$this->request->getPost('ultimo_intento_session','string');
-			$usuario->tiempo_session =$this->request->getPost('tiempo_session','string');
-			$usuario->usuario_activacion_key =$this->request->getPost('usuario_activacion_key','string');
-			$usuario->usuario_activacoin_email =$this->request->getPost('usuario_activacoin_email','string');
-			$usuario->usuario_activacoin_contrasena =$this->request->getPost('usuario_activacoin_contrasena','string');
-			
-			if($usuario->save())
+			 $this->view->setVar('viewRecord', $usuario);
+			 
+			if($this->request->isPost())
 			{
-				return $this->dispatcher->forward(['action'=>'index']);
-			}
-			else
-			{
-				$this->view->setVar("Errores", $usuario->getMessages());
-			}
-		
-		} 
-		 
+				$usuario->usuario_id =$this->request->getPost('usuario_id','string');
+				$usuario->email =$this->request->getPost('email','string');
+				$usuario->nombre =$this->request->getPost('nombre','string');
+				$usuario->password =$this->request->getPost('password','string');
+				$usuario->activo =$this->request->getPost('activo','string');
+				$usuario->fecha_registro =$this->request->getPost('fecha_registro','string');
+				$usuario->fecha_login =$this->request->getPost('fecha_login','string');
+				$usuario->intento_de_session =$this->request->getPost('intento_de_session','string');
+				$usuario->ultimo_intento_session =$this->request->getPost('ultimo_intento_session','string');
+				$usuario->tiempo_session =$this->request->getPost('tiempo_session','string');
+				$usuario->usuario_activacion_key =$this->request->getPost('usuario_activacion_key','string');
+				$usuario->usuario_activacoin_email =$this->request->getPost('usuario_activacoin_email','string');
+				$usuario->usuario_activacoin_contrasena =$this->request->getPost('usuario_activacoin_contrasena','string');
+				
+				if($usuario->save())
+				{
+					$this->addLog('Prueba Alert se envio mail a ' . $usuario->nombre, 'alert', 'test.log');
+					$this->addLog('Prueba Alert se envio mail a ' . $usuario->nombre, 'error', 'test.log');
+				//* 
+					$this->getDI()->getMail()->send
+            		(
+	            		array($usuario->email => $usuario->email),
+		            	'Correo',
+			        	'confirmation',
+    			   		array( 'confirmUrl' => '/confirm/' . $usuario->usuario_id.'/'. $usuario->email)
+        			);
+        			// */ 
+					
+		       		return $this->dispatcher->forward(['action'=>'index']);
+				}
+				else
+				{
+					$this->view->setVar("Errores", $usuario->getMessages());
+				}			
+			} 			 
+		}
 	}
-
-}
 
 
 	public function deleteAction($id)
@@ -96,39 +105,17 @@ public function editAction($id)
 			}
 	}
 
+	private function addLog($sMensaje = '', $sTipo = 'alert', $sArchivo = 'test.log')
+	{
+		$logger = new \Phalcon\Logger\Adapter\File( $this->config->application->cacheDir . $sArchivo);
 
-
-       
-    public function emailAction($id)
-    {
-
-        if($usuario = Model\Usuarios::findFirst($id))
-        {
-            $this->view->setVar('mostrar', $usuario);
-        }
-
-            if($this->request->isPost())
-            {               
-                //recibo la variable agregando que tipo es
-                $email =$this->request->getPost('email','string');
-                $username =$this->request->getPost('username','string');
-                $mensaje =$this->request->getPost('mensaje','string');
-    
-             
-               if( $this->getDI()->getMail()->send
-                    (
-                    array($email => $email),
-                    'Correo',
-                    'confirmation',
-                   array( 'confirmUrl' => '/confirm/' . $email.'/'. $email)
-                    )
-                )
-               {
-                return $this->dispatcher->forward(['action'=>'index']);
-               }
-         }
-          
-        }
+		// Start a transaction
+		$logger->begin();
+		// Add messages
+		$logger->$sTipo("Log " . $sTipo  . '-' . $sMensaje);
+		// Commit messages to file
+		$logger->commit();
+	}
 }
 
 ?>

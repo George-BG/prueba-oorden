@@ -1,5 +1,5 @@
 <?php
-
+ini_set( 'date.timezone', 'America/Mexico_City' );
 error_reporting(E_ALL);
 
 try {
