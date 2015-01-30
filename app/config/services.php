@@ -127,3 +127,12 @@ $di->set('router', function(){
 $di->set('modelsManager', function() {
       return new Phalcon\Mvc\Model\Manager();
  });
+
+// CLI
+
+$di->setShared('console', function() {
+    try {
+    // handle incoming arguments
+    $console->handle($arguments);
+    }
+});
