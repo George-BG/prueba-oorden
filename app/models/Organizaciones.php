@@ -3,6 +3,7 @@
 namespace Oorden\Models;
 
 use Phalcon\Mvc\Model\Validator\Email as Email;
+use Oorden\Libraries as Library;
 
 class Organizaciones extends \Phalcon\Mvc\Model
 {
@@ -168,6 +169,46 @@ class Organizaciones extends \Phalcon\Mvc\Model
       {
         $this->hasMany('organizacion_id', 'Oorden\Models\Sucursales', 'organizacion_id', ['alias' => 'Sucursales']);
         $this->hasMany('organizacion_id', 'Oorden\Models\UsuarioPermisos', 'organizacion_id', ['alias' => 'UsuarioPermisos']);
+
+
+        $eventsManager = new \Phalcon\Events\Manager();
+
+        //Create a database listener
+        $dbListener = new Library\MyDbListener();
+
+        $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(array(
+            "host" => "localhost",
+            "username" => "root",
+            "password" => "oorden",
+            "dbname" => "test"
+        ));
+
+        $connection->setEventsManager($eventsManager);
+        $eventsManager->attach('db', $dbListener);      
+        
+        
+        $connection->query("SELECT * FROM organizaciones "); 
+        /*
+        //Listen all the database events
+        if($connection->getSQLStatement() != '')
+        {
+            echo $connection->getSQLStatement() . '<br>';
+            $connection->query($connection->getSQLStatement());
+            die();
+        }       
+
+        //Assign the eventsManager to the db adapter instance
+        
+
+        //Send a SQL command to the database server
+        $connection->query("SELECT * FROM organizaciones "); 
+
+        $eventsManager->attach('db', function($dbListener, $connection){    
+            if ($$dbListener->getType() == 'afterQuery') {
+                $connection->query($connection->getSQLStatement());
+            }
+        });// */
+       
       }
 
 }

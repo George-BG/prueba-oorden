@@ -4,12 +4,19 @@ namespace Oorden\Controllers;
 
 use Oorden\Models as Model;
 
+
 class OrganizacionesController extends \Phalcon\Mvc\Controller
 {
 
     public function indexAction()
     {
-       $this->view->setVar("listaOrganizaciones", Model\Organizaciones::find(["cache"=>["key"=>"my-cache-org"]]));
+        // PHQL Queries ejemplo.
+
+        $phql = "SELECT * FROM Oorden\Models\Organizaciones ";
+        $query = $this->modelsManager->createQuery($phql);  
+        $oOrganizaciones = $query->execute();
+
+        $this->view->setVar("listaOrganizaciones", $oOrganizaciones);
     }
     
     public function addAction()

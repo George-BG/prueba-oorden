@@ -6,3 +6,21 @@
 [Thu, 29 Jan 15 00:08:53 -0600][ERROR] Log error-Prueba Error
 [Thu, 29 Jan 15 00:11:17 -0600][ALERT] Log alert-Prueba Alert se envio mail a Tocken User
 [Thu, 29 Jan 15 00:11:17 -0600][ERROR] Log error-Prueba Alert se envio mail a Tocken User
+[Thu, 29 Jan 15 05:29:10 -0600][INFO] SELECT * FROM organizaciones 
+[Thu, 29 Jan 15 05:29:36 -0600][INFO] SELECT * FROM organizaciones 
+[Thu, 29 Jan 15 05:29:37 -0600][INFO] SELECT * FROM organizaciones 
+[Thu, 29 Jan 15 05:30:20 -0600][INFO] SELECT * FROM organizaciones 
+[Thu, 29 Jan 15 05:30:22 -0600][INFO] SELECT * FROM organizaciones 
+[Thu, 29 Jan 15 05:30:24 -0600][INFO] SELECT * FROM organizaciones 
+[Thu, 29 Jan 15 05:30:25 -0600][INFO] SELECT * FROM organizaciones 
+[Thu, 29 Jan 15 05:30:35 -0600][INFO] SELECT * FROM organizaciones 
+[Thu, 29 Jan 15 05:30:37 -0600][INFO] SELECT * FROM organizaciones 
+[Thu, 29 Jan 15 05:30:41 -0600][INFO] SELECT * FROM organizaciones 
+[Thu, 29 Jan 15 05:30:44 -0600][INFO] SELECT * FROM organizaciones 
+[Thu, 29 Jan 15 06:08:41 -0600][INFO] SELECT * FROM organizaciones 
+[Thu, 29 Jan 15 06:09:35 -0600][INFO] SELECT * FROM organizaciones 
+[Thu, 29 Jan 15 06:09:37 -0600][INFO] SELECT * FROM organizaciones 
+[Thu, 29 Jan 15 06:09:39 -0600][INFO] SELECT * FROM organizaciones 
+[Thu, 29 Jan 15 06:09:44 -0600][INFO] SELECT * FROM organizaciones 
+[Fri, 30 Jan 15 13:28:29 -0600][ALERT] Log alert-Prueba Alert se envio mail a George B G
+[Fri, 30 Jan 15 13:28:29 -0600][ERROR] Log error-Prueba Alert se envio mail a George B G

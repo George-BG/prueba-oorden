@@ -15,6 +15,7 @@ $loader->registerNamespaces(
     [
        'Oorden\Controllers' => $config->application->controllersDir ,
        'Oorden\Models'    => $config->application->modelsDir,
+       'Oorden\Libraries'    => $config->application->libraryDir,
     ]
 );
 

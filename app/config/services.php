@@ -74,7 +74,7 @@ $di->set('modelsMetadata', function () {
     return new MetaDataAdapter();
 });
 
-//Cache dentro de los modelos
+//Cache dentro de los modelos.
 $di->set('modelsCache', function() use ($config)
     {
         //Tiempo que durara la cache (6 minutos)
@@ -108,14 +108,22 @@ $di->set('session', function () {
 });
 
 $di->set('config', $config);
-//*
+
+// Pa los namespaces
+
 $di->set('dispatcher', function() {
     $dispatcher = new \Phalcon\Mvc\Dispatcher();
     $dispatcher->setDefaultNamespace('Oorden\Controllers\\');
     return $dispatcher;
 }); // */
 
+// pa las routes
 $di->set('router', function(){
     require __DIR__.'/routes.php';
     return $router;
 });
+
+// pa los querys
+$di->set('modelsManager', function() {
+      return new Phalcon\Mvc\Model\Manager();
+ });
