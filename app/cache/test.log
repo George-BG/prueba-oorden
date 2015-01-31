@@ -24,3 +24,17 @@
 [Thu, 29 Jan 15 06:09:44 -0600][INFO] SELECT * FROM organizaciones 
 [Fri, 30 Jan 15 13:28:29 -0600][ALERT] Log alert-Prueba Alert se envio mail a George B G
 [Fri, 30 Jan 15 13:28:29 -0600][ERROR] Log error-Prueba Alert se envio mail a George B G
+[Fri, 30 Jan 15 21:22:43 -0600][ALERT] Log alert-Prueba Alert se envio mail a George B G
+[Fri, 30 Jan 15 21:22:43 -0600][ERROR] Log error-Prueba Alert se envio mail a George B G
+[Fri, 30 Jan 15 21:24:17 -0600][ALERT] Log alert-Prueba Alert se envio mail a Omar s
+[Fri, 30 Jan 15 21:24:17 -0600][ERROR] Log error-Prueba Alert se envio mail a Omar s
+[Fri, 30 Jan 15 22:05:04 -0600][ALERT] Log alert-Prueba Alert se envio mail a George B G
+[Fri, 30 Jan 15 22:05:04 -0600][ERROR] Log error-Prueba Alert se envio mail a George B G
+[Fri, 30 Jan 15 22:07:32 -0600][ALERT] Log alert-Prueba Alert se envio mail a Omar s
+[Fri, 30 Jan 15 22:07:32 -0600][ERROR] Log error-Prueba Alert se envio mail a Omar s
+[Fri, 30 Jan 15 22:09:28 -0600][ALERT] Log alert-Prueba Alert se envio mail a George B G
+[Fri, 30 Jan 15 22:09:28 -0600][ERROR] Log error-Prueba Alert se envio mail a George B G
+[Fri, 30 Jan 15 22:09:30 -0600][ALERT] Log alert-Prueba Alert se envio mail a Omar s
+[Fri, 30 Jan 15 22:09:30 -0600][ERROR] Log error-Prueba Alert se envio mail a Omar s
+[Fri, 30 Jan 15 22:09:31 -0600][ALERT] Log alert-Prueba Alert se envio mail a Tocken User
+[Fri, 30 Jan 15 22:09:31 -0600][ERROR] Log error-Prueba Alert se envio mail a Tocken User

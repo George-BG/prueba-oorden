@@ -8,6 +8,9 @@ use Phalcon\DI\FactoryDefault\CLI as CliDI,
  //Using the CLI factory default services container
  $di = new CliDI();
 
+
+
+
  // Define path to application directory
  defined('APPLICATION_PATH')
  || define('APPLICATION_PATH', realpath(dirname(__FILE__)));
@@ -15,13 +18,20 @@ use Phalcon\DI\FactoryDefault\CLI as CliDI,
  /**
   * Register the autoloader and tell it to register the tasks directory
   */
+ 
  $loader = new \Phalcon\Loader();
  $loader->registerDirs(
      array(
          APPLICATION_PATH . '/tasks'
      )
- );
+ ); 
+ $loader->registerNamespaces(
+    [
+       'Phalcon' => APPLICATION_PATH . '/vendor/phalcon/incubator/Library/Phalcon', 
+    ]
+);
  $loader->register();
+
 
  // Load the configuration file (if any)
  if(is_readable(APPLICATION_PATH . '/config/config.php')) {
@@ -46,6 +56,8 @@ use Phalcon\DI\FactoryDefault\CLI as CliDI,
         $arguments['params'][] = $arg;
      }
  }
+
+ // print_r($arguments);
 
  // define global constants for the current task and action
  define('CURRENT_TASK', (isset($argv[1]) ? $argv[1] : null));

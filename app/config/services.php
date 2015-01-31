@@ -130,9 +130,3 @@ $di->set('modelsManager', function() {
 
 // CLI
 
-$di->setShared('console', function() {
-    try {
-    // handle incoming arguments
-    $console->handle($arguments);
-    }
-});

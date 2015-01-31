@@ -3,6 +3,7 @@
 namespace Oorden\Controllers;
 
 use Oorden\Models as Model; 
+use Phalcon\Queue\Beanstalk\Extended as BeanstalkExtended;
 
 class UsuariosController extends \Phalcon\Mvc\Controller
 {
@@ -69,7 +70,7 @@ class UsuariosController extends \Phalcon\Mvc\Controller
 				{
 					$this->addLog('Prueba Alert se envio mail a ' . $usuario->nombre, 'alert', 'test.log');
 					$this->addLog('Prueba Alert se envio mail a ' . $usuario->nombre, 'error', 'test.log');
-				//* 
+				/* 
 					$this->getDI()->getMail()->send
             		(
 	            		array($usuario->email => $usuario->email),
@@ -78,6 +79,16 @@ class UsuariosController extends \Phalcon\Mvc\Controller
     			   		array( 'confirmUrl' => '/confirm/' . $usuario->usuario_id.'/'. $usuario->email)
         			);
         			// */ 
+					
+
+            		// Connect to the queue
+		            $beanstalk = new BeanstalkExtended(array(
+		                'host'   => 'localhost',
+		            ));
+
+		            // Save the video info in database and send it to post-process
+		            $beanstalk->putInTube('sendMail', rand());
+        
 					
 		       		return $this->dispatcher->forward(['action'=>'index']);
 				}
