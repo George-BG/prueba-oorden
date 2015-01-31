@@ -7,11 +7,15 @@ use Oorden\Models as Model;
 
 class OrganizacionesController extends \Phalcon\Mvc\Controller
 {
+    /**
+    * Index de Organizaciones, y ejemplo de phql
+    * 
+    * @param  void
+    * @return void
+   */
 
     public function indexAction()
     {
-        // PHQL Queries ejemplo.
-
         $phql = "SELECT * FROM Oorden\Models\Organizaciones ";
         $query = $this->modelsManager->createQuery($phql);  
         $oOrganizaciones = $query->execute();
@@ -19,6 +23,13 @@ class OrganizacionesController extends \Phalcon\Mvc\Controller
         $this->view->setVar("listaOrganizaciones", $oOrganizaciones);
     }
     
+    /**
+    * Agregar una nueva organización.
+    * 
+    * @param  void
+    * @return void
+   */
+
     public function addAction()
 	{
 		if($this->request->isPost() and $this->security->checkToken())
@@ -59,6 +70,13 @@ class OrganizacionesController extends \Phalcon\Mvc\Controller
 			}
  		}	
 	}
+
+    /**
+    * Editar las Organizaciones.
+    * 
+    * @param  int $id  Identifica la organización a editar
+    * @return void
+   */
 
 	public function editAction($id)
 	{
@@ -103,6 +121,13 @@ class OrganizacionesController extends \Phalcon\Mvc\Controller
 
         }
 	}
+
+    /**
+    * Borrar una organización.
+    * 
+    * @param  int $id  Identificación de la organización a borrar
+    * @return void
+   */
     
 	public function deleteAction($id)
 	{
@@ -118,6 +143,13 @@ class OrganizacionesController extends \Phalcon\Mvc\Controller
 				}
 			}
 	}
+
+    /**
+    * Se agrega un usuario a los permisos de organización.
+    * 
+    * @param  int $id  Id de la organización donde se agregará el usuario.
+    * @return void
+   */
 
     public function permisoAction($id)
     {
@@ -143,6 +175,13 @@ class OrganizacionesController extends \Phalcon\Mvc\Controller
             }
         }
     }
+
+    /**
+    * Muestra la relación muchos a muchos de usuarios y organizaciones, también sirve como ejemplo de routes
+    * http://prueba.io/orgusuarios para acceder a la acción.
+    * 
+    * @return void
+   */
 
     public function orgusuariosAction()
     {

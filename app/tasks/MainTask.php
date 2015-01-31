@@ -5,20 +5,39 @@ use Phalcon\Queue\Beanstalk\Job;
 
 class MainTask extends \Phalcon\CLI\Task
 {
+    /**
+    * Funcion default que usa CLI y otra función interna del objeto.
+    * 
+   */
     public function mainAction() {
          echo "\nThis is the default task and the default action \n";
 
         $this->test2Action();
     }
 
+    /**
+    * Prueba de otra función diferente CLI
+    * 
+    */
+
     public function testAction(array $params) {
        echo sprintf('hello %s', $params[0]) . PHP_EOL;
        echo sprintf('best regards, %s', $params[1]) . PHP_EOL;
    }
 
+    /**
+    * Otra función diferente dentro del mismo archivo.
+    * 
+    */
+
    public function test2Action() {
         echo "\nI will get printed too!\n";
     }
+
+    /**
+    * Monitorea los queues, muestra el estatus de las tareas que se encuentran en Beanstalk.
+    * 
+    */
 
     public function monitoreaAction() {
         
@@ -47,6 +66,11 @@ class MainTask extends \Phalcon\CLI\Task
             
         }
     }
+
+    /**
+    * Ejecuta y define las tareas que se encuentras en Beanstalk
+    *
+    */
 
     public function jobAction() {
         echo "\nI will get printed too!\n";

@@ -23,7 +23,10 @@ class UsuarioPermisos extends \Phalcon\Mvc\Model
      */
     public $permiso_id;
 
-
+    /**
+    * Inicialización del modelo, relaciones, se toman en cuenta namespace.
+    * 
+   */
 
     public function initialize()
     {

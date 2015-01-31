@@ -165,7 +165,12 @@ class Organizaciones extends \Phalcon\Mvc\Model
         }
     }
 
-     public function initialize()
+    /**
+    * Inicialización del modelo, relaciones y se crea el listener para Profiles queryes.
+    * 
+   */
+
+    public function initialize()
       {
         $this->hasMany('organizacion_id', 'Oorden\Models\Sucursales', 'organizacion_id', ['alias' => 'Sucursales']);
         $this->hasMany('organizacion_id', 'Oorden\Models\UsuarioPermisos', 'organizacion_id', ['alias' => 'UsuarioPermisos']);
@@ -175,6 +180,7 @@ class Organizaciones extends \Phalcon\Mvc\Model
 
         //Create a database listener
         $dbListener = new Library\MyDbListener();
+        $eventsManager->attach('db', $dbListener);
 
         $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(array(
             "host" => "localhost",
@@ -184,9 +190,7 @@ class Organizaciones extends \Phalcon\Mvc\Model
         ));
 
         $connection->setEventsManager($eventsManager);
-        $eventsManager->attach('db', $dbListener);      
-        
-        
+                
         $connection->query("SELECT * FROM organizaciones "); 
         /*
         //Listen all the database events

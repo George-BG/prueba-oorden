@@ -104,7 +104,12 @@ class Usuarios extends \Phalcon\Mvc\Model
         }
     }
 
-     public function initialize()
+    /**
+    * Inicialización del modelo, relaciones, se toman en cuenta namespace.
+    * 
+   */
+
+    public function initialize()
       {
         $this->hasMany('usuario_id', 'Oorden\Models\UsuarioPermisos', 'usuario_id', ['alias' => 'UsuariosPermisos']);
       }

@@ -47,7 +47,12 @@ class Sucursales extends \Phalcon\Mvc\Model
      */
     public $sucursalescol;
 
-     public function initialize()
+    /**
+    * Inicialización del modelo, relaciones, se toman en cuenta namespace.
+    * 
+   */
+
+    public function initialize()
     {
         $this->belongsTo('organizacion_id', 'Oorden\Models\Organizaciones', 'organizacion_id', ['alias' => 'Organizaciones']);
     }

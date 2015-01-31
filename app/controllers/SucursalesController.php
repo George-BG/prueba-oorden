@@ -7,10 +7,23 @@ use Oorden\Models as Model;
 class SucursalesController extends \Phalcon\Mvc\Controller
 {
 
+	/**
+    * Index de sucursales, también ejemplo de Models Cache
+    * 
+    * @return void
+   */
+
     public function indexAction()
     {
     	$this->view->setVar("listaSucursales", Model\Sucursales::find(["cache"=>["key"=>"my-cache-suc"]]));
     }
+
+    /**
+    * Se agrega una sucursal. Se usa namespace
+    * 
+    * @return void
+   */
+
     public function addAction()
 	{
 		if($this->request->isPost() and $this->security->checkToken())
@@ -35,6 +48,13 @@ class SucursalesController extends \Phalcon\Mvc\Controller
                     
     	}
     }
+
+    /**
+    * Se agrega una sucursal.
+    * 
+    * @param  int $id  Id de la sucursal a editar.
+    * @return void
+   */
 
 	public function editAction($id)
 	{
@@ -64,6 +84,13 @@ class SucursalesController extends \Phalcon\Mvc\Controller
 			 
 		}
 	}
+
+	/**
+    * Se elimina una sucursal
+    * 
+    * @param  int $id  Id de la sucursal a eliminar.
+    * @return void
+   */
 
 	public function deleteAction($id)
 	{

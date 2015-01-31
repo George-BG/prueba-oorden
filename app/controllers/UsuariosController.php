@@ -7,11 +7,22 @@ use Phalcon\Queue\Beanstalk\Extended as BeanstalkExtended;
 
 class UsuariosController extends \Phalcon\Mvc\Controller
 {
+	/**
+    * Se agrega un usuario, se usan namespace y Models Cache
+    * 
+    * @return void
+   */
 
     public function indexAction()
     {
     	$this->view->setVar("listaUsuarios", Model\Usuarios::find(["cache"=>["key"=>"my-cache-usr"]]));
     }
+
+    /**
+    * Se agrega un usuario.
+    * 
+    * @return void
+   */
     public function addAction()
     {
 		if($this->request->isPost() and $this->security->checkToken())
@@ -44,6 +55,14 @@ class UsuariosController extends \Phalcon\Mvc\Controller
     	}
     }
 
+    /**
+    * Se edita un usario, al editarlo se agregan logs, se envian Mails por switfmail (actualmente comentado)
+	* y se agrega una tarea a Beanstalk.
+    * 
+    * @param  int $id  Id del usuario a editar
+    * @return void
+   */
+
 	public function editAction($id)
 	{
 		if($usuario = Model\Usuarios::findFirst($id))
@@ -70,15 +89,17 @@ class UsuariosController extends \Phalcon\Mvc\Controller
 				{
 					$this->addLog('Prueba Alert se envio mail a ' . $usuario->nombre, 'alert', 'test.log');
 					$this->addLog('Prueba Alert se envio mail a ' . $usuario->nombre, 'error', 'test.log');
-				/* 
-					$this->getDI()->getMail()->send
-            		(
-	            		array($usuario->email => $usuario->email),
-		            	'Correo',
-			        	'confirmation',
-    			   		array( 'confirmUrl' => '/confirm/' . $usuario->usuario_id.'/'. $usuario->email)
-        			);
-        			// */ 
+				/**
+				*	Se comentó temportalmente para probar Queues.
+				* 
+				*	$this->getDI()->getMail()->send
+            	*	(
+	            *		array($usuario->email => $usuario->email),
+		        *   	'Correo',
+			    *    	'confirmation',
+    			*   		array( 'confirmUrl' => '/confirm/' . $usuario->usuario_id.'/'. $usuario->email)
+        		*	);
+        		*	// */ 
 					
 
             		// Connect to the queue
@@ -100,6 +121,12 @@ class UsuariosController extends \Phalcon\Mvc\Controller
 		}
 	}
 
+	/**
+    * Se elimina un usuario
+    * 
+    * @param  int $id  Id del usuario a eliminar
+    * @return void
+   */
 
 	public function deleteAction($id)
 	{
@@ -115,6 +142,16 @@ class UsuariosController extends \Phalcon\Mvc\Controller
 				}
 			}
 	}
+
+	/**
+    * Funcion que trata los logs, y los agrega
+	* 
+    * 
+    * @param  string $sMensaje  Mensaje a agregar 
+	* @param  string $sTipo  Tipo del mensaje (alert, danger, o info)
+	* @param  string $sArchivo Nombre del archivo que se va a modificar.
+    * @return void
+   */
 
 	private function addLog($sMensaje = '', $sTipo = 'alert', $sArchivo = 'test.log')
 	{
