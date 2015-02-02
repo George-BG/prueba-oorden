@@ -25,7 +25,7 @@ class SucursalesController extends \Phalcon\Mvc\Controller
    */
 
     public function addAction()
-	{
+	{ /*
 		if($this->request->isPost() and $this->security->checkToken())
 		{   
 			$sucursales = new Model\Sucursales();
@@ -46,7 +46,7 @@ class SucursalesController extends \Phalcon\Mvc\Controller
                 $this->view->setVar("Errores", $sucursales->getMessages());
 			}        	 			
                     
-    	}
+    	} */
     }
 
     /**

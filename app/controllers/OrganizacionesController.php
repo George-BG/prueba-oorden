@@ -7,7 +7,7 @@ use Oorden\Models as Model;
 
 class OrganizacionesController extends \Phalcon\Mvc\Controller
 {
-    /**
+/**
     * Index de Organizaciones, y ejemplo de phql
     * 
     * @param  void

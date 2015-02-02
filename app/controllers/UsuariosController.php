@@ -45,7 +45,7 @@ class UsuariosController extends \Phalcon\Mvc\Controller
 
     		//guardo la  datos recibidos del formulario
 			if($usuarios->save())
-			{    				
+			{
 				return $this->dispatcher->forward(['action'=>'index']);
 			}
 			else
